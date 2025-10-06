@@ -15,11 +15,11 @@ export default function AdminPage() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const res1 = await fetch("http://localhost:5000/api/index/stats");
+      const res1 = await fetch("https://rag-backend-kyl8.onrender.com/api/index/stats");
       const data1 = await res1.json();
       setStats(data1);
 
-      const res2 = await fetch("http://localhost:5000/api/docs?limit=50&offset=0");
+      const res2 = await fetch("https://rag-backend-kyl8.onrender.com/api/docs?limit=50&offset=0");
       const data2 = await res2.json();
       setDocs(data2.docs || []);
     } catch (error) {
@@ -35,7 +35,7 @@ export default function AdminPage() {
   const rebuildIndex = async () => {
     setRebuilding(true);
     try {
-      await fetch("http://localhost:5000/api/index/rebuild", { method: "POST" });
+      await fetch("https://rag-backend-kyl8.onrender.com/api/index/rebuild", { method: "POST" });
       await fetchData();
     } catch (error) {
       console.error("Failed to rebuild index:", error);

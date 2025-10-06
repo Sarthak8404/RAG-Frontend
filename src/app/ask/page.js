@@ -17,7 +17,7 @@ export default function AskPage() {
   const askQuestion = async () => {
     if (!query.trim()) return;
     setLoading(true);
-    const res = await fetch("http://localhost:5000/api/ask", {
+    const res = await fetch("https://rag-backend-kyl8.onrender.com/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query, k }),

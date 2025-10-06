@@ -15,13 +15,13 @@ export default function DocsPage() {
   const [loading, setLoading] = useState(false);
 
   const fetchDocs = async () => {
-    const res = await fetch("http://localhost:5000/api/docs?limit=20&offset=0");
+    const res = await fetch("https://rag-backend-kyl8.onrender.com/api/docs?limit=20&offset=0");
     const data = await res.json();
     setDocs(data.docs || []);
   };
 
   const fetchStats = async () => {
-    const res = await fetch("http://localhost:5000/api/index/stats");
+    const res = await fetch("https://rag-backend-kyl8.onrender.com/api/index/stats");
     const data = await res.json();
     setStats(data);
   };
@@ -36,7 +36,7 @@ export default function DocsPage() {
     setLoading(true);
     const formData = new FormData();
     formData.append("file", file);
-    const res = await fetch("http://localhost:5000/api/docs", {
+    const res = await fetch("https://rag-backend-kyl8.onrender.com/api/docs", {
       method: "POST",
       body: formData,
     });
@@ -48,12 +48,12 @@ export default function DocsPage() {
   };
 
   const rebuildIndex = async () => {
-    await fetch("http://localhost:5000/api/index/rebuild", { method: "POST" });
+    await fetch("https://rag-backend-kyl8.onrender.com/api/index/rebuild", { method: "POST" });
     fetchStats();
   };
 
   const viewDoc = async (id) => {
-    const res = await fetch(`http://localhost:5000/api/docs/${id}`);
+    const res = await fetch(`https://rag-backend-kyl8.onrender.com/api/docs/${id}`);
     const data = await res.json();
     setSelectedDoc(data);
   };
