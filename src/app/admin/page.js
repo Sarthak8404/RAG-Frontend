@@ -97,7 +97,7 @@ export default function AdminPage() {
                 Total Chunks
               </CardDescription>
               <CardTitle className="text-4xl font-bold text-blue-600">
-                {stats.totalChunks.toLocaleString()}
+                {(stats.totalChunks || 0).toLocaleString()}
               </CardTitle>
             </CardHeader>
             <CardContent>
